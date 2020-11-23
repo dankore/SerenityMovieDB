@@ -29,21 +29,21 @@ namespace MovieDB.Default.Entities
             set { Fields.Title[this] = value; }
         }
 
-        [DisplayName("Description"), Size(1000)]
+        [DisplayName("Description"), Size(1000), QuickSearch]
         public String Description
         {
             get { return Fields.Description[this]; }
             set { Fields.Description[this] = value; }
         }
 
-        [DisplayName("Storyline")]
+        [DisplayName("Storyline"), QuickSearch]
         public String Storyline
         {
             get { return Fields.Storyline[this]; }
             set { Fields.Storyline[this] = value; }
         }
 
-        [DisplayName("Year")]
+        [DisplayName("Year"), QuickSearch(SearchType.Equals, numericOnly: 1)]
         public Int32? Year
         {
             get { return Fields.Year[this]; }
@@ -62,6 +62,13 @@ namespace MovieDB.Default.Entities
         {
             get { return Fields.Runtime[this]; }
             set { Fields.Runtime[this] = value; }
+        }
+
+        [DisplayName("Kind"), NotNull, DefaultValue(MovieKind.Film)]
+        public MovieKind? Kind
+        {
+            get { return (MovieKind?)Fields.Kind[this]; }
+            set { Fields.Kind[this] = (Int32?)value;  }
         }
 
         IIdField IIdRow.IdField
@@ -90,6 +97,7 @@ namespace MovieDB.Default.Entities
             public Int32Field Year;
             public DateTimeField ReleaseDate;
             public Int32Field Runtime;
+            public Int32Field Kind;
         }
     }
 }
