@@ -10,7 +10,7 @@ namespace MovieDB.Default.Entities
     using System.IO;
 
     [ConnectionKey("Default"), Module("Default"), TableName("[mov].[Movie]")]
-    [DisplayName("Movie"), InstanceName("Movie")]
+    [DisplayName("Movies"), InstanceName("Movie")]
     [ReadPermission("Administration:General")]
     [ModifyPermission("Administration:General")]
     public sealed class MovieRow : Row, IIdRow, INameRow
